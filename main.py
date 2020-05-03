@@ -143,7 +143,7 @@ def dashboard():
             posts = Posts.query.all()
             return render_template('dashboard.html', params=params, posts=posts)
         else:
-            flash("Invalid username or password!", "danger")
+            flash("Invalid \n username or password!", "danger")
 
     return render_template('login.html', params=params)
 
