@@ -1,7 +1,7 @@
 import math
 import os
 
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 import json
@@ -142,6 +142,8 @@ def dashboard():
             session['user'] = username
             posts = Posts.query.all()
             return render_template('dashboard.html', params=params, posts=posts)
+        else:
+            flash("Invalid user or password!", "danger")
 
     return render_template('login.html', params=params)
 
@@ -182,6 +184,7 @@ def contact():
                           body=message + "\n" + "Phone Number: " + phone + "\n" + "Email Id: " + email
                           )
     return render_template('contact.html', params=params)
+
 
 
 app.run(debug=True)
