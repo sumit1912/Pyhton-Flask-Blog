@@ -9,7 +9,7 @@ from datetime import datetime
 
 from werkzeug.utils import secure_filename
 
-with open('config.json', 'r') as c:
+with open('/var/www/cws/cws/config.json', 'r') as c:
     params = json.load(c)["params"]
 
 local_server = True
@@ -182,5 +182,3 @@ def contact():
                           body=message + "\n" + "Phone Number: " + phone + "\n" + "Email Id: " + email
                           )
     return render_template('contact.html', params=params)
-
-app.run(debug=True)
